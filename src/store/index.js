@@ -24,7 +24,9 @@ const todoReducer = (state = defaultState, action) => {
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.id);
     case "CHANGE_DONE":
-
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, status: !todo.status } : todo
+    );
     default:
       return state;
   }
